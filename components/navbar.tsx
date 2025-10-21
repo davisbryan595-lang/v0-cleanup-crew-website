@@ -21,13 +21,14 @@ export default function Navbar({ scrolled }: NavbarProps) {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex-shrink-0 animate-slide-down">
-            <div className="text-2xl font-bold">
-              <span style={{ color: "#ffa51f" }}>THE</span>
-              <span className="text-white ml-2">CLEANUP</span>
-              <span style={{ color: "#ffa51f" }} className="ml-2">
-                CREW
-              </span>
-            </div>
+            <Image
+              src="/logo.png"
+              alt="The Cleanup Crew Logo"
+              width={160} // adjust as needed
+              height={80} // adjust as needed
+              className="object-contain"
+              priority
+            />
           </div>
 
           {/* Desktop Navigation */}
