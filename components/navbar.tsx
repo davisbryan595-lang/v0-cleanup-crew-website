@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 
 interface NavbarProps {
   scrolled: boolean
@@ -20,13 +21,15 @@ export default function Navbar({ scrolled }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 animate-slide-down">
+          <div className="flex-shrink-0 animate-float relative">
+            <div className="absolute inset-0 rounded-full blur-xl opacity-70"
+              style={{ backgroundColor: "#ffa51f", filter: "blur(20px)" }} />
             <Image
               src="/logo.png"
               alt="The Cleanup Crew Logo"
-              width={160} // adjust as needed
-              height={80} // adjust as needed
-              className="object-contain"
+              width={200}  // Increased size
+              height={100}
+              className="object-contain relative drop-shadow-[0_0_20px_rgba(255,165,31,0.6)] transition-transform duration-500 hover:scale-110"
               priority
             />
           </div>
@@ -97,6 +100,21 @@ export default function Navbar({ scrolled }: NavbarProps) {
           </div>
         )}
       </div>
+
+      {/* Floating & Glow Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
+        }
+        .animate-float {
+          animation: float 4s ease-in-out infinite;
+        }
+      `}</style>
     </nav>
   )
 }
