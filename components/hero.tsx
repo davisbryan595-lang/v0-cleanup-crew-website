@@ -20,7 +20,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url(/placeholder.svg?height=1080&width=1920&query=professional-cleanup-team-working-in-modern-space)",
+            "url(/herobg.jpg)",
         }}
       />
       <div className="absolute inset-0 bg-black/70" />
