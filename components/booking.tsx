@@ -12,6 +12,8 @@ export default function Booking() {
     address: "",
     service: "standard",
     message: "",
+    customDetails: "",
+    budget: "",
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -30,6 +32,8 @@ export default function Booking() {
       address: "",
       service: "standard",
       message: "",
+      customDetails: "",
+      budget: "",
     })
   }
 
@@ -212,6 +216,7 @@ export default function Booking() {
                   <option value="basic">Basic Clean - $199</option>
                   <option value="standard">Standard Clean - $399</option>
                   <option value="premium">Premium Clean - $699</option>
+                  <option value="custom">Custom Package (Tell us what you need)</option>
                 </select>
               </div>
 
@@ -226,6 +231,33 @@ export default function Booking() {
                   placeholder="Tell us about your cleanup needs..."
                 />
               </div>
+
+              {formData.service === "custom" && (
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-white mb-2">Custom Package Details</label>
+                    <textarea
+                      name="customDetails"
+                      value={formData.customDetails}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full px-4 py-2 border-2 border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none transition-colors resize-none"
+                      placeholder="List the items/areas to address, timeline, special requests, etc."
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-white mb-2">Preferred Budget (optional)</label>
+                    <input
+                      type="text"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="w-full px-4 py-2 border-2 border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none transition-colors"
+                      placeholder="$500"
+                    />
+                  </div>
+                </div>
+              )}
 
               <button
                 type="submit"
