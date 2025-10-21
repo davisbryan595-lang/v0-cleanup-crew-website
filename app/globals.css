@@ -221,3 +221,10 @@
   50% { transform: translate(-50%, -48%) rotate(180deg); }
   100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+
+/* Offer popup slide-in */
+@keyframes offer-in {
+  from { transform: translateY(24px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+.offer-slide-in { animation: offer-in .3s ease-out; position: relative; }
