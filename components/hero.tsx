@@ -44,7 +44,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-down">
           <span className="text-white">Transforming Clutter into</span>
           <br />
-          <span style={{ color: "#ffa51f" }}>Clean Perfection</span>
+          <span className="accent-text hero-emphasis-glow">Clean Perfection</span>
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-down" style={{ animationDelay: "0.2s" }}>
