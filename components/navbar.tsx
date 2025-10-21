@@ -23,7 +23,7 @@ export default function Navbar({ scrolled }: NavbarProps) {
           {/* Logo */}
           <div className="flex-shrink-0 animate-float relative">
             <div className="absolute inset-0 rounded-full blur-xl opacity-70"
-              style={{ backgroundColor: "#ffa51f", filter: "blur(10px)" }} />
+              style={{ backgroundColor: "#ffa51f", filter: "blur(1px)" }} />
             <Image
               src="/logo.png"
               alt="The Cleanup Crew Logo"
