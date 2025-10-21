@@ -29,6 +29,19 @@ const pricingPlans = [
       "Follow-up visit",
     ],
   },
+  {
+    name: "Custom Package",
+    price: "Get a Quote",
+    description: "Tailored services to match your exact needs",
+    features: [
+      "Mix & match any services",
+      "On-site assessment",
+      "Flexible scheduling",
+      "Itemized pricing",
+      "Business & residential",
+      "Priority booking available",
+    ],
+  },
 ]
 
 export default function Pricing() {
@@ -72,7 +85,7 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           {pricingPlans.map((plan, i) => (
             <div
               key={i}
@@ -91,9 +104,11 @@ export default function Pricing() {
 
               <div className="mb-8">
                 <span className="text-5xl font-bold">{plan.price}</span>
-                <span className={`ml-2 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>
-                  {toggle ? "/month" : "/service"}
-                </span>
+                {plan.price !== "Get a Quote" && (
+                  <span className={`ml-2 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>
+                    {toggle ? "/month" : "/service"}
+                  </span>
+                )}
               </div>
 
               <button
@@ -103,7 +118,7 @@ export default function Pricing() {
                   color: plan.featured ? "#ffa51f" : "white",
                 }}
               >
-                Book Now
+                {plan.name === "Custom Package" ? "Get Custom Quote" : "Book Now"}
               </button>
 
               <ul className="space-y-4">

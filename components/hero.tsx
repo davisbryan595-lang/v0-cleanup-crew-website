@@ -44,7 +44,7 @@ export default function Hero() {
         <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-slide-down">
           <span className="text-white">Transforming Clutter into</span>
           <br />
-          <span style={{ color: "#ffa51f" }}>Clean Perfection</span>
+          <span className="accent-text hero-emphasis-glow">Clean Perfection</span>
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-slide-down" style={{ animationDelay: "0.2s" }}>
@@ -62,15 +62,10 @@ export default function Hero() {
           >
             Get a Free Quote
           </button>
-          <a
-            href="tel:5052897190"
-            className="px-8 py-4 rounded-full font-bold text-lg transition-all duration-300"
-            style={{
-              border: "2px solid #ffa51f",
-              color: "#ffa51f",
-            }}
-          >
-            Call Now: 505-289-7190
+          <a href="tel:5052897190" className="relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 accent-text accent-border call-now-liquid border-2 overflow-hidden">
+            <span className="relative z-10">Call Now: 505-289-7190</span>
+            <span aria-hidden className="liquid-wave" />
+            <span aria-hidden className="liquid-wave-2" />
           </a>
         </div>
 

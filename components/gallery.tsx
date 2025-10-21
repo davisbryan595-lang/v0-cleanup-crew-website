@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 const beforeAfterPairs = [
   {
@@ -22,6 +22,8 @@ const beforeAfterPairs = [
 export default function Gallery() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [sliderPosition, setSliderPosition] = useState(50)
+  const [dragging, setDragging] = useState(false)
+  const containerRef = useRef<HTMLDivElement | null>(null)
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + beforeAfterPairs.length) % beforeAfterPairs.length)
@@ -31,12 +33,32 @@ export default function Gallery() {
     setCurrentIndex((prev) => (prev + 1) % beforeAfterPairs.length)
   }
 
-  const handleSliderChange = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
+  const updateFromEvent = (clientX: number) => {
+    const el = containerRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = clientX - rect.left
     const percentage = (x / rect.width) * 100
     setSliderPosition(Math.max(0, Math.min(100, percentage)))
   }
+
+  const handlePointerDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setDragging(true)
+    updateFromEvent(e.clientX)
+  }
+
+  const handlePointerMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!dragging) return
+    updateFromEvent(e.clientX)
+  }
+
+  const handlePointerUp = () => setDragging(false)
+
+  useEffect(() => {
+    const up = () => setDragging(false)
+    window.addEventListener("mouseup", up)
+    return () => window.removeEventListener("mouseup", up)
+  }, [])
 
   return (
     <section id="gallery" className="py-20 bg-black">
@@ -51,7 +73,14 @@ export default function Gallery() {
 
         {/* Slider */}
         <div className="relative max-w-3xl mx-auto mb-8">
-          <div className="relative overflow-hidden rounded-lg cursor-col-resize" onClick={handleSliderChange}>
+          <div
+            ref={containerRef}
+            className="relative overflow-hidden rounded-lg cursor-col-resize select-none"
+            onMouseDown={handlePointerDown}
+            onMouseMove={handlePointerMove}
+            onMouseUp={handlePointerUp}
+            onMouseLeave={handlePointerUp}
+          >
             {/* After Image */}
             <img
               src={beforeAfterPairs[currentIndex].after || "/placeholder.svg"}
@@ -71,12 +100,12 @@ export default function Gallery() {
 
             {/* Slider Handle */}
             <div
-              className="absolute top-0 bottom-0 w-1 cursor-col-resize"
-              style={{ left: `${sliderPosition}%`, backgroundColor: "#ffa51f" }}
+              className="absolute top-0 bottom-0 w-1 cursor-col-resize accent-bg"
+              style={{ left: `${sliderPosition}%` }}
+              onMouseDown={handlePointerDown}
             >
               <div
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white p-2 rounded-full"
-                style={{ backgroundColor: "#ffa51f" }}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white p-2 rounded-full accent-bg"
               >
                 <svg className="w-5 h-5 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
