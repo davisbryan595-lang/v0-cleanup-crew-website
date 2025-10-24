@@ -56,13 +56,14 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-slide-down"
           style={{ animationDelay: "0.4s" }}
         >
-          <button
-            className="px-8 py-4 text-white rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+          <a
+            href="#contact"
+            className="px-8 py-4 text-white rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl inline-block text-center"
             style={{ backgroundColor: "#ffa51f" }}
           >
             Get a Free Quote
-          </button>
-          <a href="tel:5052897190" className="relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 accent-text accent-border call-now-liquid border-2 overflow-hidden">
+          </a>
+          <a href="tel:5052897190" className="relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 accent-text accent-border call-now-liquid border-2 overflow-hidden inline-block">
             <span className="relative z-10">Call Now: 505-289-7190</span>
             <span aria-hidden className="liquid-wave" />
             <span aria-hidden className="liquid-wave-2" />

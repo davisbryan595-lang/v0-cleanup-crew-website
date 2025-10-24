@@ -26,21 +26,8 @@ export default function Booking() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      service: "standard",
-      message: "",
-      customDetails: "",
-      budget: "",
-      promotionalUpdates: false,
-    })
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Form will be submitted to formsubmit.co
   }
 
   return (
@@ -193,7 +180,7 @@ export default function Booking() {
 
           {/* Booking Form */}
           <div className="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form action="https://formsubmit.co/thecleanupcrew505@gmail.com" method="POST" onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Name</label>
                 <input

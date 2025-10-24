@@ -14,7 +14,6 @@ export default function Navbar({ scrolled }: NavbarProps) {
     { label: "Home", href: "home" },
     { label: "Why Choose Us", href: "why-choose-us" },
     { label: "Pricing", href: "pricing" },
-    { label: "Gallery", href: "gallery" },
     { label: "Testimonials", href: "testimonials" },
     { label: "About Us", href: "about-us" },
     { label: "Contact", href: "contact" },
