@@ -96,11 +96,11 @@ export default function Booking() {
                 <div>
                   <h4 className="font-bold text-white mb-1">Email</h4>
                   <a
-                    href="mailto:info@cleanupcrewabq.com"
+                    href="mailto:thecleanupcrew505@gmail.com"
                     className="text-gray-400 hover:text-white transition-colors"
                     style={{ color: "#ffa51f" }}
                   >
-                    info@cleanupcrewabq.com
+                    thecleanupcrew505@gmail.com
                   </a>
                 </div>
               </div>
