@@ -1,24 +1,8 @@
 "use client"
 
-import { useEffect, useState } from "react"
-
 export default function About() {
-  const [counters, setCounters] = useState({ clients: 0, satisfaction: 0, rating: 0 })
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCounters((prev) => ({
-        clients: prev.clients < 500 ? prev.clients + 10 : 500,
-        satisfaction: prev.satisfaction < 100 ? prev.satisfaction + 2 : 100,
-        rating: prev.rating < 5 ? prev.rating + 0.1 : 5,
-      }))
-    }, 30)
-
-    return () => clearInterval(interval)
-  }, [])
-
   return (
-    <section id="about" className="py-20 bg-gray-900">
+    <section id="about-us" className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
@@ -41,27 +25,10 @@ export default function About() {
               junk removal to complete space organization and light cleanup.
             </p>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6">
-              <div className="text-center">
-                <div className="text-4xl font-bold" style={{ color: "#ffa51f" }}>
-                  +{counters.clients}
-                </div>
-                <p className="text-gray-400 mt-2">Happy Clients</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold" style={{ color: "#ffa51f" }}>
-                  {counters.satisfaction}%
-                </div>
-                <p className="text-gray-400 mt-2">Satisfaction</p>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold" style={{ color: "#ffa51f" }}>
-                  {counters.rating.toFixed(1)}
-                </div>
-                <p className="text-gray-400 mt-2">Star Rating</p>
-              </div>
-            </div>
+            <p className="text-lg text-gray-400 leading-relaxed">
+              Whether you're dealing with a garage full of items, a cluttered basement, or a commercial space that needs
+              attention, The Cleanup Crew is ready to help you get back to enjoying your space.
+            </p>
           </div>
 
           {/* Image */}
