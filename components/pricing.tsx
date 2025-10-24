@@ -62,15 +62,16 @@ export default function Pricing() {
               <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
               <p className={`mb-8 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>{plan.description}</p>
 
-              <button
-                className="w-full py-3 rounded-lg font-bold mb-8 transition-all duration-300"
+              <a
+                href="#contact"
+                className="w-full py-3 rounded-lg font-bold mb-8 transition-all duration-300 inline-block text-center transform hover:scale-105"
                 style={{
                   backgroundColor: plan.featured ? "white" : "#ffa51f",
                   color: plan.featured ? "#ffa51f" : "white",
                 }}
               >
                 Get a Quote
-              </button>
+              </a>
 
               <ul className="space-y-4">
                 {plan.features.map((feature, j) => (
