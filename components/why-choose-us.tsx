@@ -9,7 +9,7 @@ export default function WhyChooseUs() {
     const interval = setInterval(() => {
       setCounters((prev) => ({
         clients: prev.clients < 329 ? prev.clients + 10 : 329,
-        satisfaction: prev.satisfaction < 100 ? prev.satisfaction + 2 : 95,
+        satisfaction: prev.satisfaction < 95 ? prev.satisfaction + 2 : 95,
         rating: prev.rating < 4.5 ? prev.rating + 0.1 : 4.5,
       }))
     }, 30)
