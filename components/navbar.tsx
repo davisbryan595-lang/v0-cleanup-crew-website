@@ -88,12 +88,12 @@ export default function Navbar({ scrolled }: NavbarProps) {
           <div className="md:hidden pb-4 space-y-2 bg-black/90">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={`#${item.href}`}
                 className="block px-4 py-2 text-gray-300 hover:text-white rounded transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <a
