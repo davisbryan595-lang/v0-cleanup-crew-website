@@ -10,7 +10,15 @@ interface NavbarProps {
 export default function Navbar({ scrolled }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const navItems = ["Home", "About", "Services", "Gallery", "Pricing", "Testimonials", "Contact"]
+  const navItems = [
+    { label: "Home", href: "home" },
+    { label: "Why Choose Us", href: "why-choose-us" },
+    { label: "Pricing", href: "pricing" },
+    { label: "Gallery", href: "gallery" },
+    { label: "Testimonials", href: "testimonials" },
+    { label: "About Us", href: "about-us" },
+    { label: "Contact", href: "contact" },
+  ]
 
   return (
     <nav
