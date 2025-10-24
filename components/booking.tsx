@@ -14,11 +14,16 @@ export default function Booking() {
     message: "",
     customDetails: "",
     budget: "",
+    promotionalUpdates: false,
   })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
+    const { name, value, type } = e.target
+    if (type === "checkbox") {
+      setFormData((prev) => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }))
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }))
+    }
   }
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -34,6 +39,7 @@ export default function Booking() {
       message: "",
       customDetails: "",
       budget: "",
+      promotionalUpdates: false,
     })
   }
 
@@ -41,9 +47,9 @@ export default function Booking() {
     <section id="contact" className="py-20 bg-black">
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
-          <span className="text-white">Book Your</span>
+          <span className="text-white">Get in</span>
           <span className="ml-3" style={{ color: "#ffa51f" }}>
-            Cleanup
+            Touch
           </span>
         </h2>
         <p className="text-center text-gray-400 mb-16 text-lg">Get started with a free consultation</p>
@@ -51,7 +57,7 @@ export default function Booking() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div>
-            <h3 className="text-2xl font-bold mb-8 text-white">Get in Touch</h3>
+            <h3 className="text-2xl font-bold mb-8 text-white">Contact Us</h3>
 
             <div className="space-y-6">
               <div className="flex gap-4">
@@ -213,9 +219,9 @@ export default function Booking() {
                   onChange={handleChange}
                   className="w-full px-4 py-2 border-2 border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none transition-colors"
                 >
-                  <option value="basic">Basic Clean - $199</option>
-                  <option value="standard">Standard Clean - $399</option>
-                  <option value="premium">Premium Clean - $699</option>
+                  <option value="standard">Regular Junk Removal</option>
+                  <option value="basic">Single Bulky Item Pickup</option>
+                  <option value="premium">Commercial Work</option>
                   <option value="custom">Custom Package (Tell us what you need)</option>
                 </select>
               </div>
@@ -259,12 +265,27 @@ export default function Booking() {
                 </div>
               )}
 
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="promotionalUpdates"
+                  name="promotionalUpdates"
+                  checked={formData.promotionalUpdates}
+                  onChange={handleChange}
+                  className="w-5 h-5 rounded border-2 border-gray-700 bg-gray-800 cursor-pointer"
+                  style={{ accentColor: "#ffa51f" }}
+                />
+                <label htmlFor="promotionalUpdates" className="text-sm text-gray-300 cursor-pointer">
+                  I agree to receive promotional updates
+                </label>
+              </div>
+
               <button
                 type="submit"
                 className="w-full py-3 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
                 style={{ backgroundColor: "#ffa51f" }}
               >
-                Book Your Cleanup
+                Get a Quote
               </button>
             </form>
           </div>

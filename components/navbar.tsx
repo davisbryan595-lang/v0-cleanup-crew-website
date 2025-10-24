@@ -10,7 +10,15 @@ interface NavbarProps {
 export default function Navbar({ scrolled }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const navItems = ["Home", "About", "Services", "Gallery", "Pricing", "Testimonials", "Contact"]
+  const navItems = [
+    { label: "Home", href: "home" },
+    { label: "Why Choose Us", href: "why-choose-us" },
+    { label: "Pricing", href: "pricing" },
+    { label: "Gallery", href: "gallery" },
+    { label: "Testimonials", href: "testimonials" },
+    { label: "About Us", href: "about-us" },
+    { label: "Contact", href: "contact" },
+  ]
 
   return (
     <nav
@@ -36,12 +44,12 @@ export default function Navbar({ scrolled }: NavbarProps) {
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, i) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={`#${item.href}`}
                 className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                {item}
+                {item.label}
                 <span
                   className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
                   style={{ backgroundColor: "#ffa51f" }}
@@ -80,12 +88,12 @@ export default function Navbar({ scrolled }: NavbarProps) {
           <div className="md:hidden pb-4 space-y-2 bg-black/90">
             {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={`#${item.href}`}
                 className="block px-4 py-2 text-gray-300 hover:text-white rounded transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
-                {item}
+                {item.label}
               </a>
             ))}
             <a
