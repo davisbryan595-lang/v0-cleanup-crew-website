@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Booking() {
   const [formData, setFormData] = useState({
@@ -16,6 +16,18 @@ export default function Booking() {
     budget: "",
     promotionalUpdates: false,
   })
+  const [showOfferNote, setShowOfferNote] = useState(false)
+
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("offerClaimed") === "1") {
+        setShowOfferNote(true)
+      }
+    } catch {}
+    const onClaim = () => setShowOfferNote(true)
+    window.addEventListener("offer-claimed", onClaim as EventListener)
+    return () => window.removeEventListener("offer-claimed", onClaim as EventListener)
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -180,6 +192,11 @@ export default function Booking() {
 
           {/* Booking Form */}
           <div className="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800">
+            {showOfferNote && (
+              <div className="mb-6 rounded-md border-2 accent-border bg-black/40 px-4 py-3">
+                <p className="text-sm text-white"><span className="font-semibold accent-text">Offer applied:</span> Booking a service before this offer expires automatically confirms your discount.</p>
+              </div>
+            )}
             <form action="https://formsubmit.co/thecleanupcrew505@gmail.com" method="POST" onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Name</label>
