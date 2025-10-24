@@ -4,34 +4,23 @@ import { useState } from "react"
 
 const pricingPlans = [
   {
-    name: "Basic Clean",
-    price: "$199",
-    description: "Perfect for small spaces",
-    features: ["Junk removal", "Sweeping", "Surface cleanup", "Up to 2 hours"],
+    name: "Regular Junk Removal",
+    description: "Perfect for household items and general junk",
+    features: ["Item assessment", "Professional removal", "Site cleanup", "Flexible scheduling"],
   },
   {
-    name: "Standard Clean",
-    price: "$399",
-    description: "Most popular choice",
-    features: ["Complete junk removal", "Deep cleaning", "Light organization", "Up to 4 hours", "Free consultation"],
+    name: "Single Bulky Item Pickup",
+    description: "Specialized for large furniture and appliances",
+    features: ["Careful handling", "Professional removal", "Same-day options available", "Fully insured"],
     featured: true,
   },
   {
-    name: "Premium Clean",
-    price: "$699",
-    description: "Full transformation",
-    features: [
-      "Complete junk removal",
-      "Deep cleaning",
-      "Full organization",
-      "Up to 8 hours",
-      "Free consultation",
-      "Follow-up visit",
-    ],
+    name: "Commercial Work",
+    description: "Construction sites, office cleanups, and more",
+    features: ["Large-scale projects", "Bulk removal", "Flexible timelines", "Business scheduling"],
   },
   {
     name: "Custom Package",
-    price: "Get a Quote",
     description: "Tailored services to match your exact needs",
     features: [
       "Mix & match any services",
@@ -39,14 +28,11 @@ const pricingPlans = [
       "Flexible scheduling",
       "Itemized pricing",
       "Business & residential",
-      "Priority booking available",
     ],
   },
 ]
 
 export default function Pricing() {
-  const [toggle, setToggle] = useState(false)
-
   return (
     <section id="pricing" className="py-20 bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
@@ -56,33 +42,7 @@ export default function Pricing() {
             Pricing
           </span>
         </h2>
-        <p className="text-center text-gray-400 mb-12 text-lg">Transparent pricing with no hidden fees</p>
-
-        {/* Toggle */}
-        <div className="flex justify-center mb-12">
-          <button
-            onClick={() => setToggle(!toggle)}
-            className="px-6 py-2 rounded-full font-semibold transition-all duration-300 text-white"
-            style={{
-              backgroundColor: !toggle ? "#ffa51f" : "transparent",
-              border: !toggle ? "none" : "2px solid #ffa51f",
-              color: !toggle ? "white" : "#ffa51f",
-            }}
-          >
-            One-Time
-          </button>
-          <button
-            onClick={() => setToggle(!toggle)}
-            className="px-6 py-2 rounded-full font-semibold transition-all duration-300 ml-4 text-white"
-            style={{
-              backgroundColor: toggle ? "#ffa51f" : "transparent",
-              border: toggle ? "none" : "2px solid #ffa51f",
-              color: toggle ? "white" : "#ffa51f",
-            }}
-          >
-            Monthly Maintenance
-          </button>
-        </div>
+        <p className="text-center text-gray-400 mb-16 text-lg">Transparent pricing with no hidden fees</p>
 
         {/* Pricing Cards */}
         <div className="grid md:grid-cols-4 gap-8">
@@ -100,16 +60,7 @@ export default function Pricing() {
               }}
             >
               <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-              <p className={`mb-6 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>{plan.description}</p>
-
-              <div className="mb-8">
-                <span className="text-5xl font-bold">{plan.price}</span>
-                {plan.price !== "Get a Quote" && (
-                  <span className={`ml-2 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>
-                    {toggle ? "/month" : "/service"}
-                  </span>
-                )}
-              </div>
+              <p className={`mb-8 ${plan.featured ? "text-white/80" : "text-gray-400"}`}>{plan.description}</p>
 
               <button
                 className="w-full py-3 rounded-lg font-bold mb-8 transition-all duration-300"
@@ -118,7 +69,7 @@ export default function Pricing() {
                   color: plan.featured ? "#ffa51f" : "white",
                 }}
               >
-                {plan.name === "Custom Package" ? "Get Custom Quote" : "Book Now"}
+                Get a Quote
               </button>
 
               <ul className="space-y-4">
