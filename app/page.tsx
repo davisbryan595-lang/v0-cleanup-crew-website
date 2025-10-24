@@ -3,11 +3,10 @@
 import { useState, useEffect } from "react"
 import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
-import About from "@/components/about"
-import Services from "@/components/services"
+import WhyChooseUs from "@/components/why-choose-us"
 import Pricing from "@/components/pricing"
-import Gallery from "@/components/gallery"
 import Testimonials from "@/components/testimonials"
+import About from "@/components/about"
 import Booking from "@/components/booking"
 import Footer from "@/components/footer"
 import SpecialOffer from "@/components/special-offer"
@@ -31,11 +30,10 @@ export default function Home() {
         Get a Free Quote
       </a>
       <Hero />
-      <About />
-      <Services />
+      <WhyChooseUs />
       <Pricing />
-      <Gallery />
       <Testimonials />
+      <About />
       <Booking />
       <Footer />
     </main>
