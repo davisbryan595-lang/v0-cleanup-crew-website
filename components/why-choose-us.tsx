@@ -8,9 +8,9 @@ export default function WhyChooseUs() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCounters((prev) => ({
-        clients: prev.clients < 500 ? prev.clients + 10 : 500,
-        satisfaction: prev.satisfaction < 100 ? prev.satisfaction + 2 : 100,
-        rating: prev.rating < 5 ? prev.rating + 0.1 : 5,
+        clients: prev.clients < 329 ? prev.clients + 10 : 329,
+        satisfaction: prev.satisfaction < 100 ? prev.satisfaction + 2 : 95,
+        rating: prev.rating < 4.5 ? prev.rating + 0.1 : 4.5,
       }))
     }, 30)
 
