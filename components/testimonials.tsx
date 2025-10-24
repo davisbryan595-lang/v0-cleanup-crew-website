@@ -1,107 +1,81 @@
 "use client"
 
-import { useState, useEffect } from "react"
-
 const testimonials = [
   {
     name: "Sarah Johnson",
-    text: "The Cleanup Crew transformed my garage in just one day. Professional, efficient, and friendly!",
+    text: "The Cleanup Crew transformed my garage in just one day. Professional, efficient, and friendly! They went above and beyond my expectations.",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
   },
   {
     name: "Mike Rodriguez",
-    text: "Best decision I made. They handled everything from junk removal to organization. Highly recommended!",
+    text: "Best decision I made. They handled everything from junk removal to organization. The team was punctual and respectful of my property.",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
   },
   {
     name: "Emily Chen",
-    text: "Amazing service! They made my cluttered basement look brand new. Will definitely call them again.",
+    text: "Amazing service! They made my cluttered basement look brand new. Will definitely call them again for future projects. Highly satisfied!",
     rating: 5,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
   },
 ]
 
 export default function Testimonials() {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [autoPlay, setAutoPlay] = useState(true)
-
-  useEffect(() => {
-    if (!autoPlay) return
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [autoPlay])
-
   return (
-    <section id="testimonials" className="py-20 bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4">
+    <section id="testimonials" className="py-20 bg-gray-800">
+      <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">
           <span className="text-white">What Our</span>
           <span className="ml-3" style={{ color: "#ffa51f" }}>
             Clients Say
           </span>
         </h2>
-        <p className="text-center text-gray-400 mb-16 text-lg">Real testimonials from satisfied customers</p>
+        <p className="text-center text-gray-300 mb-16 text-lg">Real testimonials from satisfied customers</p>
 
-        {/* Carousel */}
-        <div
-          className="relative bg-gray-800 p-12 rounded-lg shadow-lg border border-gray-700"
-          onMouseEnter={() => setAutoPlay(false)}
-          onMouseLeave={() => setAutoPlay(true)}
-        >
-          {/* Stars */}
-          <div className="flex justify-center gap-1 mb-6">
-            {Array.from({ length: testimonials[currentIndex].rating }).map((_, i) => (
-              <span key={i} className="text-2xl" style={{ color: "#ffa51f" }}>
-                ★
-              </span>
-            ))}
-          </div>
-
-          {/* Testimonial Text */}
-          <p className="text-xl text-center text-gray-300 mb-8 italic">"{testimonials[currentIndex].text}"</p>
-
-          {/* Author */}
-          <p className="text-center font-bold text-lg text-white">{testimonials[currentIndex].name}</p>
-
-          {/* Navigation */}
-          <div className="flex justify-center gap-4 mt-8">
-            <button
-              onClick={() => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length)}
-              className="p-2 text-white rounded-full hover:opacity-80 transition-opacity duration-300"
-              style={{ backgroundColor: "#ffa51f" }}
+        {/* Testimonials Grid */}
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, i) => (
+            <div
+              key={i}
+              className="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-700 hover:border-orange-500 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <div className="flex gap-2 items-center">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className="w-2 h-2 rounded-full transition-all duration-300"
-                  style={{
-                    backgroundColor: i === currentIndex ? "#ffa51f" : "#666",
-                    width: i === currentIndex ? "32px" : "8px",
-                  }}
+              {/* Profile Section */}
+              <div className="flex flex-col items-center mb-6">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full object-cover mb-4 border-2"
+                  style={{ borderColor: "#ffa51f" }}
                 />
-              ))}
-            </div>
+                <h3 className="text-lg font-bold text-white text-center">{testimonial.name}</h3>
+              </div>
 
-            <button
-              onClick={() => setCurrentIndex((prev) => (prev + 1) % testimonials.length)}
-              className="p-2 text-white rounded-full hover:opacity-80 transition-opacity duration-300"
-              style={{ backgroundColor: "#ffa51f" }}
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
+              {/* Stars */}
+              <div className="flex justify-center gap-1 mb-6">
+                {Array.from({ length: testimonial.rating }).map((_, j) => (
+                  <span key={j} className="text-xl" style={{ color: "#ffa51f" }}>
+                    ★
+                  </span>
+                ))}
+              </div>
+
+              {/* Testimonial Text */}
+              <p className="text-gray-300 text-center leading-relaxed italic">"{testimonial.text}"</p>
+
+              {/* Quote Icon */}
+              <div className="flex justify-center mt-6">
+                <svg
+                  className="w-8 h-8 opacity-20"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  style={{ color: "#ffa51f" }}
+                >
+                  <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.716-3-6-3-1.5 0-3.5 1.5-3.5 3 0 1 1 3 2 4 0 1-1.5 2-2 2s-1-2-1-2c0-3 1-5 2-5 2-1 5-1 7-1 3 0 7 1 7 8v8c0 3-1 4-7 4-1.5 0-4-.5-5-2 1 .5 2 1.5 2 3s-1 3-2 3" />
+                </svg>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
