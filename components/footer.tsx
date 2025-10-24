@@ -64,28 +64,36 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Follow Us</h4>
             <div className="flex gap-4">
-              {[
-                { icon: "facebook", path: "#" },
-                { icon: "instagram", path: "#" },
-                { icon: "twitter", path: "#" },
-                { icon: "linkedin", path: "#" },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href={social.path}
-                  className="text-gray-400 hover:text-white transition-colors"
-                  style={{ color: "#ffa51f" }}
+              <a
+                href="https://www.facebook.com/share/17M9FQnhmD/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                style={{ color: "#ffa51f" }}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  {/* Simple placeholder icons (you can replace these with lucide-react or real ones) */}
-                  <svg
-                    className="w-5 h-5"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle cx="12" cy="12" r="10" />
-                  </svg>
-                </a>
-              ))}
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/the_clean_up_crew505?igsh=ZDRsdmNmcmhkcnpj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                style={{ color: "#ffa51f" }}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 7.313c.05.001.102.002.155.002 1.378 0 2.5 1.122 2.5 2.5v8.75c0 1.378-1.122 2.5-2.5 2.5H7.404c-1.378 0-2.5-1.122-2.5-2.5V9.815c0-1.378 1.122-2.5 2.5-2.5h9.037zm-4.441 1.688c-1.933 0-3.5 1.567-3.5 3.5s1.567 3.5 3.5 3.5 3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5zm4.441.903c.331 0 .6.269.6.6s-.269.6-.6.6-.6-.269-.6-.6.269-.6.6-.6z" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>
