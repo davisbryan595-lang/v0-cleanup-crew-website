@@ -48,12 +48,13 @@ export default function Services() {
               <h3 className="text-2xl font-bold mb-4 text-white">{service.title}</h3>
               <p className="text-gray-400 mb-6 leading-relaxed">{service.description}</p>
 
-              <button
-                className="font-semibold transition-colors duration-300 flex items-center gap-2"
+              <a
+                href="#contact"
+                className="font-semibold transition-colors duration-300 flex items-center gap-2 hover:gap-3 hover:opacity-80"
                 style={{ color: "#ffa51f" }}
               >
                 Book Now →
-              </button>
+              </a>
             </div>
           ))}
         </div>
