@@ -44,12 +44,12 @@ export default function Navbar({ scrolled }: NavbarProps) {
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, i) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
+                key={item.label}
+                href={`#${item.href}`}
                 className="text-gray-300 hover:text-white transition-colors duration-300 relative group"
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                {item}
+                {item.label}
                 <span
                   className="absolute bottom-0 left-0 w-0 h-0.5 group-hover:w-full transition-all duration-300"
                   style={{ backgroundColor: "#ffa51f" }}
