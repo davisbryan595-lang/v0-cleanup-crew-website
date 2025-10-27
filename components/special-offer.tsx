@@ -57,7 +57,7 @@ export default function SpecialOffer() {
             <button aria-label="Close" onClick={close} className="absolute top-2.5 right-2.5 text-gray-400 hover:text-white">✕</button>
             <div>
               <p className="uppercase tracking-widest text-[10px] text-gray-400 mb-1">Limited Time</p>
-              <h3 className="text-xl font-extrabold mb-2 accent-text hero-emphasis-glow">Get 15% off all fall cleanups — limited time only!</h3>
+              <h3 className="text-xl font-extrabold mb-2 accent-text hero-emphasis-glow">Get $100 off all fall cleanups — limited time only!</h3>
               <div className="flex gap-2">
                 <a href="#pricing" onClick={close} className="px-4 py-2 rounded-full font-semibold text-black accent-bg hover:opacity-90 transition">View Pricing</a>
                 <a href="#contact" onClick={claim} className="px-4 py-2 rounded-full font-semibold accent-text accent-border border-2 hover:bg-white/5 transition">Claim Now</a>
