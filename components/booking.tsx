@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useEffect, useState } from "react"
 
 export default function Booking() {
@@ -17,6 +16,8 @@ export default function Booking() {
     promotionalUpdates: false,
   })
   const [showOfferNote, setShowOfferNote] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null)
 
   useEffect(() => {
     try {
@@ -38,8 +39,52 @@ export default function Booking() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // Form will be submitted to formsubmit.co
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    // Prepare form data
+    const submitData = new FormData()
+    Object.entries(formData).forEach(([key, value]) => {
+      // Only include customDetails and budget if service is "custom"
+      if (key === "customDetails" || key === "budget") {
+        if (formData.service === "custom") {
+          submitData.append(key, String(value))
+        }
+      } else {
+        submitData.append(key, String(value))
+      }
+    })
+    submitData.append("access_key", "32a21268-2ed0-4e2e-83b1-5123ffcc47e1") // Your Web3Forms access key
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submitData,
+      })
+
+      if (response.ok) {
+        setSubmitStatus("success")
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          address: "",
+          service: "standard",
+          message: "",
+          customDetails: "",
+          budget: "",
+          promotionalUpdates: false,
+        })
+      } else {
+        setSubmitStatus("error")
+      }
+    } catch (error) {
+      setSubmitStatus("error")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -156,11 +201,7 @@ export default function Booking() {
                     className="hover:opacity-80 transition-opacity"
                     style={{ color: "#ffa51f" }}
                   >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                   </a>
@@ -171,11 +212,7 @@ export default function Booking() {
                     className="hover:opacity-80 transition-opacity"
                     style={{ color: "#ffa51f" }}
                   >
-                    <svg
-                      className="w-6 h-6"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
+                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm4.441 7.313c.05.001.102.002.155.002 1.378 0 2.5 1.122 2.5 2.5v8.75c0 1.378-1.122 2.5-2.5 2.5H7.404c-1.378 0-2.5-1.122-2.5-2.5V9.815c0-1.378 1.122-2.5 2.5-2.5h9.037zm-4.441 1.688c-1.933 0-3.5 1.567-3.5 3.5s1.567 3.5 3.5 3.5 3.5-1.567 3.5-3.5-1.567-3.5-3.5-3.5zm4.441.903c.331 0 .6.269.6.6s-.269.6-.6.6-.6-.269-.6-.6.269-.6.6-.6z" />
                     </svg>
                   </a>
@@ -194,10 +231,16 @@ export default function Booking() {
           <div className="bg-gray-900 p-8 rounded-lg shadow-lg border border-gray-800">
             {showOfferNote && (
               <div className="mb-6 rounded-md border-2 accent-border bg-black/40 px-4 py-3">
-                <p className="text-sm text-white"><span className="font-semibold accent-text">Offer applied:</span> Booking a service before this offer expires automatically confirms your discount.</p>
+                <p className="text-sm text-white">
+                  <span className="font-semibold accent-text">Offer applied:</span> Booking a service before this offer expires automatically confirms your discount.
+                </p>
               </div>
             )}
-            <form action="https://formsubmit.co/rehmanwasif69@gmail.com" method="POST" onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Web3Forms Hidden Fields */}
+              <input type="hidden" name="access_key" value="32a21268-2ed0-4e2e-83b1-5123ffcc47e1" />
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Name</label>
                 <input
@@ -322,11 +365,24 @@ export default function Booking() {
 
               <button
                 type="submit"
-                className="w-full py-3 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105"
+                disabled={isSubmitting}
+                className="w-full py-3 text-white font-bold rounded-lg transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{ backgroundColor: "#ffa51f" }}
               >
-                Get a Quote
+                {isSubmitting ? "Sending..." : "Get a Quote"}
               </button>
+
+              {/* Submit Status Feedback */}
+              {submitStatus === "success" && (
+                <div className="mt-4 p-4 bg-green-900/50 border border-green-500 rounded-lg text-green-300 text-center">
+                  Thanks! We'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === "error" && (
+                <div className="mt-4 p-4 bg-red-900/50 border border-red-500 rounded-lg text-red-300 text-center">
+                  Something went wrong. Please try again.
+                </div>
+              )}
             </form>
           </div>
         </div>
