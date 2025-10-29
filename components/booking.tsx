@@ -197,7 +197,7 @@ export default function Booking() {
                 <p className="text-sm text-white"><span className="font-semibold accent-text">Offer applied:</span> Booking a service before this offer expires automatically confirms your discount.</p>
               </div>
             )}
-            <form action="https://formsubmit.co/wawigedu@mailgolem.com" method="POST" onSubmit={handleSubmit} className="space-y-6">
+            <form action="https://formsubmit.co/rehmanwasif69@gmail.com" method="POST" onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Name</label>
                 <input
