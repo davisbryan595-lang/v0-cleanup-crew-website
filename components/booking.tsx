@@ -44,24 +44,26 @@ export default function Booking() {
     setIsSubmitting(true)
     setSubmitStatus(null)
 
-    // Prepare form data
-    const submitData = new FormData()
-    Object.entries(formData).forEach(([key, value]) => {
-      // Only include customDetails and budget if service is "custom"
-      if (key === "customDetails" || key === "budget") {
-        if (formData.service === "custom") {
-          submitData.append(key, String(value))
-        }
-      } else {
-        submitData.append(key, String(value))
-      }
-    })
-    submitData.append("access_key", "32a21268-2ed0-4e2e-83b1-5123ffcc47e1") // Your Web3Forms access key
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const form = e.currentTarget
+      const formDataToSend = new FormData()
+      Object.entries(formData).forEach(([key, value]) => {
+        // Only include customDetails and budget if service is "custom"
+        if (key === "customDetails" || key === "budget") {
+          if (formData.service === "custom") {
+            formDataToSend.append(key, String(value))
+          }
+        } else {
+          formDataToSend.append(key, String(value))
+        }
+      })
+
+      const response = await fetch("https://formspree.io/f/xeopkrwg", {
         method: "POST",
-        body: submitData,
+        body: formDataToSend,
+        headers: {
+          Accept: "application/json",
+        },
       })
 
       if (response.ok) {
@@ -102,7 +104,6 @@ export default function Booking() {
           {/* Contact Info */}
           <div>
             <h3 className="text-2xl font-bold mb-8 text-white">Contact Us</h3>
-
             <div className="space-y-6">
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
@@ -132,7 +133,6 @@ export default function Booking() {
                   </a>
                 </div>
               </div>
-
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <svg
@@ -161,7 +161,6 @@ export default function Booking() {
                   </a>
                 </div>
               </div>
-
               <div className="flex gap-4">
                 <div className="flex-shrink-0">
                   <svg
@@ -190,7 +189,6 @@ export default function Booking() {
                   <p className="text-gray-400">Albuquerque, Rio Rancho, Corrales, Los Lunas, Belén</p>
                 </div>
               </div>
-
               <div>
                 <h4 className="font-bold text-white mb-4">Follow Us</h4>
                 <div className="flex gap-4">
@@ -219,7 +217,6 @@ export default function Booking() {
                 </div>
               </div>
             </div>
-
             <img
               src="/happy-cleanup-team-with-thumbs-up.jpg"
               alt="Cleanup team"
@@ -236,11 +233,12 @@ export default function Booking() {
                 </p>
               </div>
             )}
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Web3Forms Hidden Fields */}
-              <input type="hidden" name="access_key" value="32a21268-2ed0-4e2e-83b1-5123ffcc47e1" />
-              <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
-
+            <form
+              action="https://formspree.io/f/xeopkrwg"
+              method="POST"
+              onSubmit={handleSubmit}
+              className="space-y-6"
+            >
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Name</label>
                 <input
@@ -254,7 +252,6 @@ export default function Booking() {
                   placeholder="Your name"
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Email</label>
                 <input
@@ -267,7 +264,6 @@ export default function Booking() {
                   placeholder="your@email.com"
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Phone</label>
                 <input
@@ -280,7 +276,6 @@ export default function Booking() {
                   placeholder="505-289-7190"
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Address</label>
                 <input
@@ -293,7 +288,6 @@ export default function Booking() {
                   placeholder="Your address"
                 />
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Service Type</label>
                 <select
@@ -308,7 +302,6 @@ export default function Booking() {
                   <option value="custom">Custom Package (Tell us what you need)</option>
                 </select>
               </div>
-
               <div>
                 <label className="block text-sm font-semibold text-white mb-2">Message</label>
                 <textarea
@@ -320,7 +313,6 @@ export default function Booking() {
                   placeholder="Tell us about your cleanup needs..."
                 />
               </div>
-
               {formData.service === "custom" && (
                 <div className="space-y-6">
                   <div>
@@ -347,7 +339,6 @@ export default function Booking() {
                   </div>
                 </div>
               )}
-
               <div className="flex items-center gap-3">
                 <input
                   type="checkbox"
@@ -355,14 +346,15 @@ export default function Booking() {
                   name="promotionalUpdates"
                   checked={formData.promotionalUpdates}
                   onChange={handleChange}
-                  className="w-5 h-5 rounded border-2 border-gray-700 bg-gray-800 cursor-pointer"
+                  className="w-5 h-5 rounded border-2 border-gray-700 bg-gray-800 cursorียว
+
+                  cursor-pointer"
                   style={{ accentColor: "#ffa51f" }}
                 />
                 <label htmlFor="promotionalUpdates" className="text-sm text-gray-300 cursor-pointer">
                   I agree to receive promotional updates
                 </label>
               </div>
-
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -371,8 +363,6 @@ export default function Booking() {
               >
                 {isSubmitting ? "Sending..." : "Get a Quote"}
               </button>
-
-              {/* Submit Status Feedback */}
               {submitStatus === "success" && (
                 <div className="mt-4 p-4 bg-green-900/50 border border-green-500 rounded-lg text-green-300 text-center">
                   Thanks! We'll get back to you soon.
