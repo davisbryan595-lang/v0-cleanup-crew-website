@@ -125,11 +125,11 @@ export default function Booking() {
                 <div>
                   <h4 className="font-bold text-white mb-1">Call Us</h4>
                   <a
-                    href="tel:5052897190"
+                    href="tel:5053374677"
                     className="text-gray-400 hover:text-white transition-colors"
                     style={{ color: "#ffa51f" }}
                   >
-                    505-289-7190
+                    505-337-4677
                   </a>
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function Booking() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-2 border-2 border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none transition-colors"
-                  placeholder="505-289-7190"
+                  placeholder="505-337-4677"
                 />
               </div>
               <div>

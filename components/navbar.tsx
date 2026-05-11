@@ -60,7 +60,7 @@ export default function Navbar({ scrolled }: NavbarProps) {
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:5052897190"
+              href="tel:5053374677"
               className="px-6 py-2 text-white rounded-full transition-all duration-300 font-semibold animate-glow-pulse"
               style={{ backgroundColor: "#ffa51f" }}
             >
@@ -96,7 +96,7 @@ export default function Navbar({ scrolled }: NavbarProps) {
               </a>
             ))}
             <a
-              href="tel:5052897190"
+              href="tel:5053374677"
               className="block px-4 py-2 text-white rounded text-center font-semibold"
               style={{ backgroundColor: "#ffa51f" }}
             >

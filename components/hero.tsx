@@ -63,8 +63,8 @@ export default function Hero() {
           >
             Get a Free Quote
           </a>
-          <a href="tel:5052897190" className="relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 accent-text accent-border call-now-liquid border-2 overflow-hidden inline-block">
-            <span className="relative z-10">Call Now: 505-289-7190</span>
+          <a href="tel:5053374677" className="relative px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 accent-text accent-border call-now-liquid border-2 overflow-hidden inline-block">
+            <span className="relative z-10">Call Now: 505-337-4677</span>
             <span aria-hidden className="liquid-wave" />
             <span aria-hidden className="liquid-wave-2" />
           </a>
