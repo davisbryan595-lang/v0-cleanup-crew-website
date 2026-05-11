@@ -352,7 +352,7 @@ export default function Booking() {
                   style={{ accentColor: "#ffa51f" }}
                 />
                 <label htmlFor="promotionalUpdates" className="text-sm text-gray-300 cursor-pointer">
-                  I agree to receive promotional updates
+                  By providing my phone number and submitting this form, I consent to receive SMS messages from The Clean-Up Crew including junk removal scheduling, appointment reminders, and follow-up communications. Message frequency may vary. Message & data rates may apply. Reply STOP to opt out. Reply HELP for help
                 </label>
               </div>
               <button
