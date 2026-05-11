@@ -7,6 +7,12 @@ const testimonials = [
     rating: 5,
     image: "https://cdn.builder.io/api/v1/image/assets%2Ff43b39b3050e4088ad38f429ea8c0a4b%2F3ad56d2ba5524311a5ddc30dca531376?format=webp&width=800&height=1200",
   },
+  {
+    name: "Steven",
+    text: "Reasonable price, quick and clean. Definitely would use again.",
+    rating: 5,
+    image: "https://cdn.builder.io/api/v1/image/assets%2Ff43b39b3050e4088ad38f429ea8c0a4b%2F3ad56d2ba5524311a5ddc30dca531376?format=webp&width=800&height=1200",
+  },
 ]
 
 export default function Testimonials() {
