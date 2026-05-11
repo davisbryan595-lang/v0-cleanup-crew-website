@@ -218,7 +218,7 @@ export default function Booking() {
               </div>
             </div>
             <img
-              src="/happy-cleanup-team-with-thumbs-up.jpg"
+              src="https://cdn.builder.io/api/v1/image/assets%2Ff43b39b3050e4088ad38f429ea8c0a4b%2F85a7b06dfe9d4c48ad84d230fe4a4c9f?format=webp&width=800&height=1200"
               alt="Cleanup team"
               className="rounded-lg mt-8 shadow-lg"
             />

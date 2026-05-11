@@ -2,22 +2,10 @@
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    text: "The Cleanup Crew transformed my garage in just one day. Professional, efficient, and friendly! They went above and beyond my expectations.",
+    name: "Karin",
+    text: "Needed a large pile of landscape waste removed from my yard. Anthony provided a quick response ( contacted & schedule within the same day ) He also offered a fair price and was a very hard worker. I would certainly hire this company again",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
-  },
-  {
-    name: "Mike Rodriguez",
-    text: "Best decision I made. They handled everything from junk removal to organization. The team was punctual and respectful of my property.",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
-  },
-  {
-    name: "Emily Chen",
-    text: "Amazing service! They made my cluttered basement look brand new. Will definitely call them again for future projects. Highly satisfied!",
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
+    image: "https://cdn.builder.io/api/v1/image/assets%2Ff43b39b3050e4088ad38f429ea8c0a4b%2F3ad56d2ba5524311a5ddc30dca531376?format=webp&width=800&height=1200",
   },
 ]
 

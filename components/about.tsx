@@ -34,7 +34,7 @@ export default function About() {
           {/* Image */}
           <div className="relative">
             <img
-              src="/professional-cleanup-team-working-in-organized-spa.jpg"
+              src="https://cdn.builder.io/api/v1/image/assets%2Ff43b39b3050e4088ad38f429ea8c0a4b%2F1aca0b54c0154fa686552440754ae3e3?format=webp&width=800&height=1200"
               alt="The Cleanup Crew team"
               className="rounded-lg shadow-xl"
             />
